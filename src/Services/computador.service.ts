@@ -19,11 +19,11 @@ export class ComputadorService {
     }
 
     findByAtivo(ativo: String): Observable<Computador> {
-        return this.http.get<Computador>(`${API_CONFIG.baseUrl}/computador/busca/id/${ativo}`);
+        return this.http.get<Computador>(`${API_CONFIG.baseUrl}/computador/busca/ativo/${ativo}`);
     }
 
     findAll(): Observable<Computador[]> {
-        return this.http.get<Computador[]>(`${API_CONFIG.baseUrl}/computador/ativo`);
+        return this.http.get<Computador[]>(`${API_CONFIG.baseUrl}/computador/busca`);
     }
 
     insertComputador(computador : Computador){
