@@ -1,0 +1,20 @@
+export interface Computador {
+    id: string,
+    ativo: string,
+    tipo: string,
+    isRecepcao: string,
+    unidade: string,
+    setor: string,
+    colaborador: string,
+    usaAntiVirus: string,
+    usaCardio: string,
+    usaPiramide: string,
+    usaQlikView: string,
+    fabricante: string,
+    modelo: string,
+    processador: string,
+    ram: string,
+    hd: string,
+    sistemaOperacional: string,
+    office: string
+}
