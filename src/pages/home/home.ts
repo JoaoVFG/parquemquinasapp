@@ -11,13 +11,6 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public computador: ComputadorService) {
 
-                computador.findAll()
-                  .subscribe(responseComputador =>{
-                    console.log(responseComputador);
-                  },
-                  error => {
-                    console.log(error);
-                  })
 
   }
 

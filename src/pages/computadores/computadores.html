@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Computadores</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <h1>Computadores cadastrados</h1>
+    </ion-list-header>
+    <a>
+      <ion-item *ngFor="let computador of computadores" (click)="openDetail()">
+        <h2>Ativo: {{computador.ativo}}</h2>
+        <h2>Setor: {{computador.setor}}</h2>
+        <h3>Usuário: {{computador.colaborador}}</h3>
+      </ion-item>
+    </a>
+  </ion-list>
+</ion-content>
