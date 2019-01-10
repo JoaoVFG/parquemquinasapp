@@ -1,56 +1,58 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Computador } from '../../Model/computador.dto';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ComputadorService } from '../../Services/computador.service';
-import { Computador } from '../../Model/computador.dto';
 
-/**
- * Generated class for the ComputadorCreatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
-  selector: 'page-computador-create',
-  templateUrl: 'computador-create.html',
+  selector: 'page-computador-update',
+  templateUrl: 'computador-update.html',
 })
-export class ComputadorCreatePage {
+export class ComputadorUpdatePage {
+
+  computador: Computador;
   formGroup: FormGroup;
 
-  constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public computadorService: ComputadorService,
+    public computadorService : ComputadorService,
     public alertController: AlertController) {
+
+
+    this.computador = this.navParams.get('computador');
+    if (this.computador == undefined) {
+      this.navCtrl.setRoot('ComputadoresPage');
+    }
+
     this.formGroup = this.formBuilder.group({
-      id: [''],
-      ativo: [''],
-      tipo: [''],
-      isRecepcao: ['NÃO'],
-      unidade: [''],
-      setor: [''],
-      colaborador: [''],
-      usaAntiVirus: ['NÃO'],
-      usaCardio: ['NÃO'],
-      usaPiramide: ['NÃO'],
-      usaQlikView: ['NÃO'],
-      fabricante: [''],
-      modelo: [''],
-      processador: [''],
-      ram: [''],
-      hd: [''],
-      sistemaOperacional: [''],
-      office: ['NENHUM']
+      id: [this.computador.id],
+      ativo: [this.computador.ativo],
+      tipo: [this.computador.tipo],
+      isRecepcao: [this.computador.isRecepcao],
+      unidade: [this.computador.unidade],
+      setor: [this.computador.setor],
+      colaborador: [this.computador.colaborador],
+      usaAntiVirus: [this.computador.usaAntiVirus],
+      usaCardio: [this.computador.usaCardio],
+      usaPiramide: [this.computador.usaPiramide],
+      usaQlikView: [this.computador.usaQlikView],
+      fabricante: [this.computador.fabricante],
+      modelo: [this.computador.modelo],
+      processador: [this.computador.processador],
+      ram: [this.computador.ram],
+      hd: [this.computador.hd],
+      sistemaOperacional: [this.computador.sistemaOperacional],
+      office: [this.computador.office]
     });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ComputadorCreatePage');
-  }
-
-  cadastrarComputador() {
+  alterarComputador(){
+    console.log('teste');
     let computador: Computador = {
       id: this.formGroup.value.id,
       ativo: this.formGroup.value.ativo,
@@ -71,22 +73,18 @@ export class ComputadorCreatePage {
       sistemaOperacional: this.formGroup.value.sistemaOperacional,
       office: this.formGroup.value.office,
     }
-    console.log(computador);
-    this.computadorService.insertComputador(computador)
+    this.computadorService.updateComputador(computador)
       .subscribe(response => {
-          console.log(response)
+          console.log(response);
           this.showInsertOk();
-      },
-      error =>{
-        console.log(error);
+          
       })
   }
-
 
   showInsertOk() {
     let alert = this.alertController.create({
       title: 'Sucesso!',
-      message: 'Cadastro efetuado com sucesso!',
+      message: 'Alteração efetuado com sucesso!',
       enableBackdropDismiss: false,
       buttons: [
         {

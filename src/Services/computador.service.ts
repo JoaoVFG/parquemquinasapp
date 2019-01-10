@@ -40,4 +40,8 @@ export class ComputadorService {
     deleteComputador(id : string){
         return this.http.delete(`${API_CONFIG.baseUrl}/computador/${id}`)
     }
+
+    updateComputador( updateComputador : Computador):Observable<any>{
+    	return this.http.put(`${API_CONFIG.baseUrl}/computador/update`,updateComputador);
+    }
 }

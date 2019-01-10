@@ -61,6 +61,10 @@ export class ComputadoresPage {
       });
   }
 
+  alterarComputador(computador : Computador){
+    this.navCtrl.push('ComputadorUpdatePage', { 'computador': computador })
+  }
+
   buscaComputador(){
     this.computadorService.findAll()
       .subscribe(response => {

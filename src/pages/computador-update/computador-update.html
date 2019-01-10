@@ -1,0 +1,140 @@
+<!--
+  Generated template for the ComputadorUpdatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ALTERAÇÃO DE COMPUTADOR</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label>TIPO DO COMPUTADOR</ion-label>
+      <ion-select formControlName="tipo" interface="popover">
+        <ion-option value="DESKTOP">DESKTOP</ion-option>
+        <ion-option value="NOTEBOOK">NOTEBOOK</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>ATIVO</ion-label>
+      <ion-input formControlName="ativo" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>UNIDADE</ion-label>
+      <ion-select formControlName="unidade" interface="popover">
+        <ion-option value="SEDE">SEDE</ion-option>
+        <ion-option value="HOSPITAL">HOSPITAL</ion-option>
+        <ion-option value="ESPAÇO VIVER BEM">ESPAÇO VIVER BEM</ion-option>
+        <ion-option value="FARMÁCIA">FARMÁCIA</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>SETOR</ion-label>
+      <ion-input formControlName="setor" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>É DE RECEPÇÃO?</ion-label>
+      <ion-select formControlName="isRecepcao" interface="popover">
+        <ion-option value="SIM">SIM</ion-option>
+        <ion-option value="NÃO">NÃO</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>USUÁRIO</ion-label>
+      <ion-input formControlName="colaborador" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>FABRICANTE</ion-label>
+      <ion-input formControlName="fabricante" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>MODELO</ion-label>
+      <ion-input formControlName="modelo" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>PROCESSADOR</ion-label>
+      <ion-input formControlName="processador" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>RAM</ion-label>
+      <ion-input formControlName="ram" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>HD</ion-label>
+      <ion-input formControlName="hd" type="text"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>SISTEMA OPERACIONAL</ion-label>
+      <ion-select formControlName="sistemaOperacional" interface="popover">
+        <ion-option value="WINDOWS XP">WINDOWS XP</ion-option>
+        <ion-option value="WINDOWS VISTA">WINDOWS VISTA</ion-option>
+        <ion-option value="WINDOWS 07">WINDOWS 07</ion-option>
+        <ion-option value="WINDOWS 08">WINDOWS 08</ion-option>
+        <ion-option value="WINDOWS 10">WINDOWS 10</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>PACOTE OFFICE</ion-label>
+      <ion-select formControlName="office" interface="popover">
+        <ion-option value="NENHUM" checked="true">NENHUM</ion-option>
+        <ion-option value="OFFICE 2007">OFFICE 2007</ion-option>
+        <ion-option value="OFFICE 2010">OFFICE 2010</ion-option>
+        <ion-option value="OFFICE 2016">OFFICE 2016</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>PROGRAMAS</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>USA CARDIO?</ion-label>
+      <ion-select formControlName="usaCardio" interface="popover">
+        <ion-option value="SIM">SIM</ion-option>
+        <ion-option value="NÃO">NÃO</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>USA ANTI-VIRUS?</ion-label>
+      <ion-select formControlName="usaAntiVirus" interface="popover">
+        <ion-option value="SIM">SIM</ion-option>
+        <ion-option value="NÃO">NÃO</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>USA PIRAMIDE?</ion-label>
+      <ion-select formControlName="usaPiramide" interface="popover">
+        <ion-option value="SIM">SIM</ion-option>
+        <ion-option value="NÃO">NÃO</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>USA QLIKVIEW?</ion-label>
+      <ion-select formControlName="usaQlikView" interface="popover">
+        <ion-option value="SIM">SIM</ion-option>
+        <ion-option value="NÃO">NÃO</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block (click)="alterarComputador()">Alterar Computador</button>
+  </form>
+</ion-content>
