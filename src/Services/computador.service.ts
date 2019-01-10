@@ -28,7 +28,7 @@ export class ComputadorService {
 
     insertComputador(computador : Computador){
         return this.http.post(
-            `${API_CONFIG.baseUrl}`,
+            `${API_CONFIG.baseUrl}/computador/insere`,
             computador,
             {
                 observe : 'response',
