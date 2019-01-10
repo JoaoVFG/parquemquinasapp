@@ -9,12 +9,13 @@
 
 
 <ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
   <ion-list>
     <ion-list-header>
       <h1>Computadores cadastrados</h1>
     </ion-list-header>
     <a>
-      <ion-item *ngFor="let computador of computadores" (click)="openDetail()">
+      <ion-item *ngFor="let computador of computadoresExibicao" (click)="openDetail()">
         <h2>Ativo: {{computador.ativo}}</h2>
         <h2>Setor: {{computador.setor}}</h2>
         <h3>Usuário: {{computador.colaborador}}</h3>

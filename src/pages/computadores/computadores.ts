@@ -18,6 +18,7 @@ import { ComputadorService } from '../../Services/computador.service';
 export class ComputadoresPage {
 
   public computadores : Computador[];
+  public computadoresExibicao : Computador[];
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,13 +30,31 @@ export class ComputadoresPage {
     this.computadorService.findAll()
       .subscribe(response => {
         this.computadores = response;
-        console.log(this.computadores);
-        
+        this.computadoresExibicao = this.computadores;
+
       })
   }
 
   openDetail(){
-    console.log("open detail")
+
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+    
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.computadoresExibicao = this.computadores.filter((computador) => {
+        return (computador.ativo.toString().indexOf(val.toLowerCase()) > -1);
+      })
+    }else{
+      this.computadoresExibicao = this.computadores;
+
+    }
   }
 
 }
