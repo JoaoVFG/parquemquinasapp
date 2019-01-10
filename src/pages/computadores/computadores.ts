@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Computador } from '../../Model/computador.dto';
 import { ComputadorService } from '../../Services/computador.service';
 
-/**
- * Generated class for the ComputadoresPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -17,43 +11,73 @@ import { ComputadorService } from '../../Services/computador.service';
 })
 export class ComputadoresPage {
 
-  public computadores : Computador[];
-  public computadoresExibicao : Computador[];
+  public computadores: Computador[];
+  public computadoresExibicao: Computador[];
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public computadorService : ComputadorService) {
+    public computadorService: ComputadorService,
+    private alertCtrl: AlertController) {
 
   }
 
   ionViewDidLoad() {
+    this.buscaComputador();
+  }
+
+  openDetail(computador: Computador) {
+    this.navCtrl.push('ComputerDetailPage', { 'computador': computador })
+  }
+
+  alertDeletaComputador(id: string) {
+    let alert = this.alertCtrl.create({
+      title: 'Remover Computador',
+      message: 'Deseja Realmente remover esse computador?',
+      buttons: [
+        {
+          text: 'Sim',
+          role: 'deletarComputador',
+          handler: () => {
+            this.deletarComputador(id);
+          }
+        },
+        {
+          text: 'Não',
+          handler: () => {
+            console.log('Computador não foi deletado' + id);
+          }
+        }
+      ]
+    });
+    alert.present();
+
+  }
+
+  deletarComputador(id : string){
+    this.computadorService.deleteComputador(id)
+      .subscribe(response =>{
+        this.buscaComputador;
+      }, error =>{
+      });
+  }
+
+  buscaComputador(){
     this.computadorService.findAll()
       .subscribe(response => {
         this.computadores = response;
         this.computadoresExibicao = this.computadores;
-
       })
   }
 
-  openDetail(){
-
-  }
-
   getItems(ev) {
-    // Reset items back to all of the items
-
-
-    // set val to the value of the ev target
     var val = ev.target.value;
-    
-    // if the value is an empty string don't filter the items
+
     if (val && val.trim() != '') {
       this.computadoresExibicao = this.computadores.filter((computador) => {
         return (computador.ativo.toString().indexOf(val.toLowerCase()) > -1);
       })
-    }else{
+    } else {
       this.computadoresExibicao = this.computadores;
-
     }
   }
 

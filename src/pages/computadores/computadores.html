@@ -9,17 +9,26 @@
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
   <ion-list>
+
     <ion-list-header>
       <h1>Computadores cadastrados</h1>
     </ion-list-header>
+
     <a>
-      <ion-item *ngFor="let computador of computadoresExibicao" (click)="openDetail()">
-        <h2>Ativo: {{computador.ativo}}</h2>
-        <h2>Setor: {{computador.setor}}</h2>
-        <h3>Usuário: {{computador.colaborador}}</h3>
-      </ion-item>
+      <ion-item-sliding *ngFor="let computador of computadoresExibicao">
+        <ion-item (click)="openDetail(computador)">
+          <h2>Ativo: {{computador.ativo}}</h2>
+          <h2>Setor: {{computador.setor}}</h2>
+          <h3>Usuário: {{computador.colaborador}}</h3>
+        </ion-item>
+        <ion-item-options side="right">
+            <button danger (click)="alertDeletaComputador(computador.id)" ion-button color="danger"><ion-icon name="trash"></ion-icon>Delete</button>
+           </ion-item-options>
+      </ion-item-sliding>
     </a>
+
   </ion-list>
 </ion-content>
